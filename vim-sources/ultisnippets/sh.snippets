@@ -1,0 +1,207 @@
+snippet completion
+function _${1:fn_name}() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD]}"
+    opts="$(${0})"
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+endsnippet
+
+snippet new_bash_fn
+#!${1:}function ${2:new_fn} {
+    if [ $# -ne 1 ] ; then
+        echo "USAGE: $2 ${3:FILENAME}"
+        return 1
+    fi
+    $0
+}
+endsnippet
+
+snippet new_bash_fn_plain
+function ${1:new_fn} {
+    if [ $# -ne 1 ] ; then
+        echo "USAGE: $1 ${2:FILENAME}"
+        return 1
+    fi
+    $0
+}
+endsnippet
+
+snippet #!
+#!/usr/bin/env bash
+
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+THIS_PROG="\$0"
+
+
+$0
+endsnippet
+
+snippet help
+function show_help {
+    cat <<-EOF
+USAGE: $THIS_PROG -o OPTVAL [-f] [--help]
+
+This script $1
+
+            --flag,-f   Boolean flag option
+             --opt,-o   User-provided option value
+            --help,-h   Show this help message
+                --      All parameters following '--' will be forwarded
+EOF
+}
+
+
+$0
+endsnippet
+
+snippet args
+FLAG=false
+OPT=""
+${2:OTHER_OPTS}=()
+
+while [ $# -ne 0 ] ; do
+    param="\$1"
+    shift
+
+    case "$param" in
+        --)
+            while [ $# -ne 0 ] ; do
+                $2+=("\$1")
+                shift
+            done
+            ;;
+        --help|-h)
+            show_help
+            exit 1
+            ;;
+        --flag|-f)
+            FLAG=true
+            ;;
+        --opt|-o)
+            OPT="\$1"
+            shift
+            ;;
+        *)
+            echo "[!] Unrecognized parameter $param"
+            echo
+            show_help
+            exit 1
+            ;;
+    esac
+done
+endsnippet
+
+snippet wrap-script
+#!/usr/bin/env bash
+
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+THIS_PROG="\$0"
+SUBPROGRAM="${1:ls}"
+
+
+function show_help {
+    cat <<-EOF
+USAGE: $THIS_PROG -o OPTVAL [-f] [--help] [-- ${2:FORWARDED-OPTIONS}]
+
+This script wraps the '$SUBPROGRAM' program:
+
+            --flag,-f   Boolean flag option
+             --opt,-o   User-provided option value
+            --help,-h   Show this help message
+                --      All parameters following '--' will be forwarded
+EOF
+}
+
+
+function validate_options {
+    error=false
+
+    if [ -z "$OPT" ] ; then
+        echo "--opt must be set"
+        error=true
+    fi
+
+    if [ "$error" = true ] ; then 
+        echo "Error validating options"
+        echo
+        show_help
+        exit 1
+    fi
+}
+
+
+function run_program {
+    CMD=(
+        "$SUBPROGRAM"
+
+        # default wrapped program options
+        ${3:-la}
+
+        "${$2[@]}"
+    )
+    echo "running command ${CMD[*]}"
+    "${CMD[@]}"
+}
+
+
+FLAG=false
+OPT=""
+
+
+$2=()
+
+
+while [ $# -ne 0 ] ; do
+    param="\$1"
+    shift
+
+    case "$param" in
+        --)
+            while [ $# -ne 0 ] ; do
+                $2+=("\$1")
+                shift
+            done
+            ;;
+        --help|-h)
+            show_help
+            exit 1
+            ;;
+        --flag|-f)
+            FLAG=true
+            ;;
+        --opt|-o)
+            OPT="\$1"
+            shift
+            ;;
+        *)
+            echo "[!] Unrecognized parameter $param"
+            echo
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+
+validate_options
+run_program
+EXIT_CODE=$?
+
+
+echo "Exit code: $EXIT_CODE"
+
+
+if [ $EXIT_CODE -eq 0 ] ; then
+    echo "Success"
+else
+    echo "Failure"
+fi
+exit $EXIT_CODE
+endsnippet

@@ -1,0 +1,66 @@
+snippet hello
+HELLO WORLD
+endsnippet
+
+#snippet BLAHRG
+##!/usr/bin/env python
+## -*- coding: utf-8 -*-
+#
+#
+#"""
+#${1:Use this script to do something}
+#"""
+#
+#
+#import argparse
+#import os
+#import sys
+#
+#
+#def something(value):
+#    if value is None:
+#        print("No value specified!")
+#        exit(1)
+#
+#    print(value)
+#
+#
+#def parse_args(argv):
+#    parser = argparse.ArgumentParser(
+#        prog=argv[0],
+#        usage=__doc__,
+#        formatter_class=argparse.RawTextHelpFormatter,
+#    )
+#
+#    parser.add_argument("-s", "--something",
+#        action="store_true",
+#        default=False
+#    )
+#    parser.add_argument("-v", "--value",
+#        default=None,
+#    )
+#	${0}
+#    return parser.parse_args(argv[1:])
+#
+#
+#def main(argv):
+#    """Main function for this script
+#
+#    :argv: TODO
+#    :returns: TODO
+#    """
+#    args = parse_args(argv)
+#
+#    if args.something:
+#        something(args.value)
+#    else:
+#        print("not something")
+#
+#
+#if __name__ == "__main__":
+#    main(sys.argv)
+#endsnippet
+#
+#snippet xxx
+#XXXXXXXX
+#endsnippet

@@ -1,0 +1,12 @@
+snippet TOC
+`!p 
+import subprocess
+proc = subprocess.Popen(
+	["markdown-toc", "--no-firsth1", path],
+	stdout=subprocess.PIPE,
+	stderr=subprocess.STDOUT,
+)
+out, _ = proc.communicate()
+snip.rv = out.decode("utf8")
+`
+endsnippet

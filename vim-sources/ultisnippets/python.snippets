@@ -1,0 +1,195 @@
+snippet notimpl
+raise NotImplementedError("$1${2: is not implemented}")
+endsnippet
+
+snippet obj
+type(
+    "${1:TmpClass}",
+    (object,),
+    {
+        "${0:attr1}": "value",
+    },
+)()
+endsnippet
+
+snippet ---
+# -------------------------------------------------------------------------
+
+endsnippet
+
+snippet server
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Runs the $1 web application
+
+    -H,--host  The hostname/IP to run the service on (default=127.0.0.1)
+    -p,--port  The port to run the service on (default=8080)
+   -d,--debug  Run the service in debug mode (default=False)
+       --wsgi  Run the service with native wsgi (default=False)
+"""
+
+
+import argparse
+import flask
+import os
+from os.path import join, abspath, dirname
+import subprocess
+import sys
+import waitress
+
+
+THIS_DIR = abspath(join(dirname(__file__)))
+
+
+app = flask.Flask("$1")
+
+
+@app.route("${2:/}", methods=[${3:"GET"}])
+def index():
+    return "Hello World"
+
+
+def run_wsgi(host, port):
+    waitress.serve(
+        app,
+        threads=4,
+        host=host,
+        port=port,
+    )
+
+
+def parse_args(argv):
+    class ArgParser(argparse.ArgumentParser):
+        def format_help(self):
+            return __doc__
+
+    parser = ArgParser()
+
+    parser.add_argument(
+        "-H", "--host",
+        default="127.0.0.1",
+        help="Host/IP to run the $1 web application",
+    )
+    parser.add_argument(
+        "-p", "--port",
+        default=8080,
+        type=int,
+        help="Port to run the $1 web application",
+    )
+    parser.add_argument(
+        "-d", "--debug",
+        default=False,
+        action="store_true",
+        help="Run the $1 web application debug mode",
+    )
+    parser.add_argument(
+        "--wsgi",
+        default=False,
+        action="store_true",
+        help="Run $1 web application with wsgi (USE THIS IN PROD)",
+    )
+
+    return parser.parse_args(argv[1:])
+
+
+def main(argv):
+    """Main function for this script
+
+    :argv: TODO
+    :returns: TODO
+    """
+    args = parse_args(argv)
+
+    if args.wsgi:
+        run_wsgi(
+            host=args.host,
+            port=args.port,
+        )
+    else:
+        app.run(
+            host=args.host,
+            port=args.port,
+            debug=args.debug,
+            use_reloader=args.debug,
+        )
+
+
+if __name__ == "__main__":
+    main(sys.argv)
+endsnippet
+
+snippet script
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+"""
+${1:Use this script to do something}
+"""
+
+
+import argparse
+import os
+import sys
+
+
+
+def parse_args(argv):
+    class ArgParser(argparse.ArgumentParser):
+        def format_help(self):
+            return __doc__
+
+    parser = ArgParser()
+
+    ${0}
+
+    return parser.parse_args(argv[1:])
+
+
+def main(argv):
+    """Main function for this script
+
+    :argv: TODO
+    :returns: TODO
+    """
+    args = parse_args(argv)
+
+
+if __name__ == "__main__":
+    main(sys.argv)
+endsnippet
+
+snippet arg_bool
+parser.add_argument(
+    "-${1}", "--${2}",
+    action="store_${3:true}",
+    default=${4:False},
+    help="${5:Help text for $2}",
+)${0}
+endsnippet
+
+snippet arg_list
+parser.add_argument(
+    "-${1}", "--${2}",
+    nargs="*",
+    help="${5:Help text for $2}",
+)${0}
+endsnippet
+
+snippet arg_list_plain
+parser.add_argument(
+    "${1:items}",
+    nargs="*",
+    help="${5:Help text for $1}",
+)${0}
+endsnippet
+
+snippet arg
+parser.add_argument(
+    "-${1}", "--${2}",
+    default=${4:"some_value"},
+    help="${5:Help text for $2}",
+)${0}
+endsnippet

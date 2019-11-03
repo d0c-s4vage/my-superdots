@@ -1,0 +1,34 @@
+snippet function
+/**
+ * ${2:Documentation for $1}
+ *
+ * @return $3
+ */
+public function ${1:functionName}($4) {
+	$0
+}
+endsnippet
+
+snippet iffalse
+if (false === $1) {
+	$0
+}
+endsnippet
+
+snippet <?
+<?php
+
+/**
+ * ${2:This file contains the $1 class}
+ */
+
+namespace $3;
+
+/**
+ * The $1 class is responsible for $4
+ */
+class $1
+{
+    $0
+}
+endsnippet
