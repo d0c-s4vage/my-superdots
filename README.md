@@ -2,9 +2,13 @@
 
 This project is a [superdots](https://github.com/super-dots/superdots) plugin.
 
-* [Description](#description)
-* [Installing](#installing)
-* [Updating](#updating)
+- [Description](#description)
+- [Installing](#installing)
+- [Updating](#updating)
+- [Features](#features)
+  * [Bash Functions](#bash-functions)
+  * [Tmux](#tmux)
+  * [Vim](#vim)
 
 ## Description
 
