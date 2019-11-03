@@ -37,6 +37,44 @@ superdots-upgrade
 
 ## Features
 
+### Bash Functions
+
+This superdots plugin comes with over 50 categorized bash functions:
+
+```
+bash-sources                                                                                                                                                                          
+├── aliases.sh                                                                                                                                                                        
+├── asm.sh                                                                                                                                                                            
+├── completion.sh                                                                                                                                                                     
+├── compression.sh                                                                                                                                                                    
+├── copy.sh                                                                                                                                                                           
+├── cscope.sh                                                                                                                                                                         
+├── docker.sh                                                                                                                                                                         
+├── files.sh
+├── git.sh
+├── hackers.sh
+├── json.sh
+├── k8s.sh
+├── main.sh
+├── misc.sh
+├── nodejs.sh
+├── overlay.sh
+├── path.sh
+├── privacy.sh
+├── prompt.sh
+├── python.sh
+├── qrcode.sh
+├── random.sh
+├── rbenv.sh
+├── redshift.sh
+├── rust.sh
+├── screen.sh
+├── serve.sh
+├── ssh.sh
+├── tmux.sh
+└── vi.sh
+```
+
 ### Tmux
 
 This superdots plugin includes custom statusline settings to show:
