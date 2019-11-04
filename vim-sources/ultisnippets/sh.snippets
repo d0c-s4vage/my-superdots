@@ -1,4 +1,4 @@
-snippet completion
+snippet complete
 function _${1:fn_name}() {
     local cur prev opts
     COMPREPLY=()
@@ -11,17 +11,7 @@ function _${1:fn_name}() {
 }
 endsnippet
 
-snippet new_bash_fn
-#!${1:}function ${2:new_fn} {
-    if [ $# -ne 1 ] ; then
-        echo "USAGE: $2 ${3:FILENAME}"
-        return 1
-    fi
-    $0
-}
-endsnippet
-
-snippet new_bash_fn_plain
+snippet function
 function ${1:new_fn} {
     if [ $# -ne 1 ] ; then
         echo "USAGE: $1 ${2:FILENAME}"
