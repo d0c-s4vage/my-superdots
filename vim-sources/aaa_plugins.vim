@@ -64,12 +64,12 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes', { 'do': ':AirlineTheme tomorrow'}
 Plug 'airblade/vim-gitgutter'
 Plug 'nanotech/jellybeans.vim'
-Plug 'vim-scripts/AfterColors.vim'
+"Plug 'vim-scripts/AfterColors.vim'
 "Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
 "Plug 'd0c-s4vage/pfp-vim'
 Plug 'godlygeek/tabular'
