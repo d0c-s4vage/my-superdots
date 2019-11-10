@@ -26,7 +26,7 @@ let g:LanguageClient_serverCommands = {
 " Plug 'tpope/vim-dispatch'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'psf/black'
+"Plug 'psf/black'
 
 "Plug 'fishbullet/deoplete-ruby'
 "Plug 'uplus/deoplete-solargraph'
@@ -39,7 +39,7 @@ Plug 'honza/vim-snippets'
 Plug 'd0c-s4vage/vim-morph'
 Plug 'd0c-s4vage/pfp-vim'
 "Plug 'shawncplus/phpcomplete.vim'
-Plug 'rhysd/vim-grammarous'
+"Plug 'rhysd/vim-grammarous'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
