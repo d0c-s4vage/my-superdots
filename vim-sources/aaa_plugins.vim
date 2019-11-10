@@ -10,8 +10,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
+
+Plug 'junegunn/fzf.vim'
 
 
 let g:LanguageClient_serverCommands = {
@@ -24,8 +24,8 @@ let g:LanguageClient_serverCommands = {
 
 " Plug 'tpope/vim-bundler'
 " Plug 'tpope/vim-dispatch'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for' : 'ruby' }
 "Plug 'psf/black'
 
 "Plug 'fishbullet/deoplete-ruby'
@@ -37,7 +37,7 @@ Plug 'vim-scripts/SyntaxRange'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'd0c-s4vage/vim-morph'
-Plug 'd0c-s4vage/pfp-vim'
+Plug 'd0c-s4vage/pfp-vim', { 'on': [ 'PfpInit', 'PfpParse' ] }
 "Plug 'shawncplus/phpcomplete.vim'
 "Plug 'rhysd/vim-grammarous'
 
@@ -58,12 +58,12 @@ Plug 'kien/ctrlp.vim'
 "Plug 'shawncplus/phpcomplete.vim'
 
 Plug 'ervandew/supertab'
-Plug 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'Lokaltog/vim-easymotion'
-Plug 'scrooloose/nerdtree'
-Plug 'fatih/vim-go'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes', { 'do': ':AirlineTheme tomorrow'}
@@ -73,7 +73,7 @@ Plug 'vim-scripts/AfterColors.vim'
 "Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
 "Plug 'd0c-s4vage/pfp-vim'
 Plug 'godlygeek/tabular'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 
 call plug#end()
 
