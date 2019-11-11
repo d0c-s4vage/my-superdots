@@ -68,7 +68,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes', { 'do': ':AirlineTheme tomorrow'}
 Plug 'airblade/vim-gitgutter'
-Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-scripts/AfterColors.vim'
 "Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
 "Plug 'd0c-s4vage/pfp-vim'
@@ -82,4 +82,4 @@ let mapleader = ","
 
 set laststatus=2
 
-exe "source ".s:this_dir."/after/colors/jellybeans.vim"
+"exe "source ".s:this_dir."/after/colors/jellybeans.vim"

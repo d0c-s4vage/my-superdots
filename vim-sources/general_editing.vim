@@ -17,7 +17,9 @@ set incsearch
 set cmdheight=2
 set colorcolumn=80
 
-colors jellybeans
+" colors jellybeans
+" default to dark background
+set background=dark
 
 function! MaybeSetRelative()
     if &number
