@@ -19,7 +19,9 @@ set colorcolumn=80
 
 " colors jellybeans
 " default to dark background
+set termguicolors
 set background=dark
+colors solarized8
 
 function! MaybeSetRelative()
     if &number

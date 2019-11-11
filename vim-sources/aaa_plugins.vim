@@ -68,7 +68,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes', { 'do': ':AirlineTheme tomorrow'}
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 "Plug 'vim-scripts/AfterColors.vim'
 "Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
 "Plug 'd0c-s4vage/pfp-vim'
