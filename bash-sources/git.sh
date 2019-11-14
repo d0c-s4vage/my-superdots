@@ -14,11 +14,11 @@ function wip_current_branch {
     fi
     # remote: To create a merge request for feature/3-parameter_defaults_allow_none, visit:
     # remote:   https://gitlab.some.host/mr-url
-    mr_url=$(git push origin "${curr_branch}" 2>&1 | grep "To create a merge request" -A1 | tail -n +2 | sed 's/remote://')
+    mr_url=$(git push origin "${curr_branch}" 2>&1 | grep -E "To create a (merge|pull) request" -A1 | tail -n +2 | sed 's/remote://')
 
-    echo "Opening Merge Request URL for ${curr_branch}"
+    echo "Opening Merge/Pull Request URL for ${curr_branch}"
     echo "${mr_url}"
-    chromium-browser "${mr_url}"
+    xdg-open "${mr_url}"
 }
 
 git config --global diff.tool vimdiff

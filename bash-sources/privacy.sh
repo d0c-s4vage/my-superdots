@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 PROXY_HOST=""
 PROXY_SSH_KEY=""

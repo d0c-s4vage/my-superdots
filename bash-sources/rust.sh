@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function g__install_rust {
+function install_rust {
     echo ""
     echo "---------------------------------"
     echo "Rust is not installed, installing"

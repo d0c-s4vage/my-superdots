@@ -1,4 +1,4 @@
-function g__disasm {
+function disasm {
     file="$1"
     start="$2"
     end="$3"

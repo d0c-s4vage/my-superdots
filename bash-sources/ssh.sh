@@ -24,7 +24,7 @@ fi
 
 
 # Run a local ssh server in a docker container
-function g__ssh_local_start {
+function ssh_local_start {
     tmpdir=$(mktemp -d)
     cat <<-EOF > "${tmpdir}/Dockerfile"
 FROM ubuntu
@@ -43,8 +43,10 @@ EOF
         -v "${HOME}":/host_home \
         --name g-local-ssh \
         g-local-ssh
+
+    echo "stop the local ssh server with 'ssh_local_stop'"
 }
 
-function g__ssh_local_stop {
+function ssh_local_stop {
     docker kill g-local-ssh
 }

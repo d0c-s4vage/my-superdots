@@ -1,5 +1,5 @@
 
-function g__cscope_files {
+function cscope_files {
 	find . -type f \
 		-name "*.h.in" -or \
 		-name "*.h" -or \
@@ -15,22 +15,22 @@ function g__cscope_files {
 	>> cscope.files
 }
 
-function g__cscope {
+function cscope {
 	cscope -Rbkq $*
 }
 
-function g__cscope_refresh {
-	g__cscope_find_db
+function cscope_refresh {
+	cscope_find_db
 	(
 		cd "$(dirname $cscope_path)"
 		rm cscope* tags
-		g__cscope_files
-		g__cscope
+		cscope_files
+		cscope
 		ctags -L cscope.files
 	)
 }
 
-function g__cscope_find_db {
+function cscope_find_db {
 	cscope_path="./"
 	while true ; do
 		if [ "$path" == "./../../../../../../" ] ; then

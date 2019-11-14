@@ -1,6 +1,6 @@
-function g__srv_input {
+function srv_input {
     if [ $# -gt 2 ] || [ $1 == "--help" ] ; then
-        echo "USAGE: g__srv_input HOST:PORT"
+        echo "USAGE: srv_input HOST:PORT"
         return 1
     fi
 
@@ -16,14 +16,13 @@ app = flask.Flask("test")
 def index():
     if request.method == "POST":
         print(request.form["password"])
-    else:
-        return "<form method=POST><input name=password type=password></input><input type=submit value=DONE /></form>"
+    return "<form method=POST><input name=password type=password></input><input type=submit value=DONE /></form>"
 
 app.run(host="0.0.0.0", debug=False)
 EOF
 }
 
-function g__srv_nginx {
+function srv_nginx {
     tmpdir=$(tempfile)
     rm "$tmpdir" && mkdir -p "$tmpdir"
     (
@@ -46,9 +45,9 @@ server {
 EOF
     )
     CMD=(
-        sudo docker run
+        docker run
             --rm
-            -p 0.0.0.0:80:80
+            -p 0.0.0.0:8080:80
             -v "$tmpdir":/etc/nginx/conf.d/
             -v $(pwd):/usr/share/nginx/html:ro
             nginx
@@ -57,15 +56,15 @@ EOF
     rm -rf "$tmpdir"
 }
 
-function g__previewmd {
+function previewmd {
 	(
 		sleep 0.5
-		google-chrome http://localhost:8080/
+		xdg-open http://localhost:8080/
 	) &
     # https://github.com/joeyespo/grip
 	grip --user-content $1 8080
 }
 
-function g__expandurl {
+function expandurl {
 	wget -S --spider --no-check-certificate "$1" 2>&1 | grep ^Location
 }
