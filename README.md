@@ -36,7 +36,7 @@ To update your local copy of this plugin to the latest version, run the command
 below:
 
 ```
-superdots-upgrade
+superdots-update
 ```
 
 ## Features
