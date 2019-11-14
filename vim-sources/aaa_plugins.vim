@@ -34,7 +34,7 @@ Plug 'tpope/vim-rails', { 'for' : 'ruby' }
 "Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/SyntaxRange'
 "Plug 'vim-syntastic/syntastic'
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', { 'tag': '3.1' } # they changed the way snippets are loaded/edited in 3.2
 Plug 'honza/vim-snippets'
 Plug 'd0c-s4vage/vim-morph'
 Plug 'd0c-s4vage/pfp-vim', { 'on': [ 'PfpInit', 'PfpParse' ] }
