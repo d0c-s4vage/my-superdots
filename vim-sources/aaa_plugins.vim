@@ -11,16 +11,18 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-
 let g:LanguageClient_serverCommands = {
-    \ 'c': ['clangd-8'],
-    \ 'cpp': ['clangd-8'],
+    \ 'sh': ['bash-language-server', 'start'],
+    \ 'c': ['clangd-7'],
+    \ 'cpp': ['clangd-7'],
     \ 'python': ['pyls'],
+    \ 'go': ['gopls'],
     \ 'ruby': ['/usr/local/bin/solargraph', 'stdio'],
 \ }
-
 
 " Plug 'tpope/vim-bundler'
 " Plug 'tpope/vim-dispatch'
@@ -32,7 +34,7 @@ Plug 'tpope/vim-rails', { 'for' : 'ruby' }
 "Plug 'uplus/deoplete-solargraph'
 
 "Plug 'rust-lang/rust.vim'
-Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/SyntaxRange', { 'for': 'markdown' }
 "Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips', { 'tag': '3.1' } " they changed the way snippets are loaded/edited in 3.2
 Plug 'honza/vim-snippets'
