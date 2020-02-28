@@ -3,13 +3,13 @@
 function qr {
     (
         if [ ! -d /tmp/qr-venv ] ; then
-            venv2 /tmp/qr-venv
+            venv3 /tmp/qr-venv
             . /tmp/qr-venv/bin/activate
-            pip install pyqrcode
+            pip3 install pyqrcode
         else
             . /tmp/qr-venv/bin/activate
         fi
-        python <(cat <<EOF
+        python3 <(cat <<EOF
 import argparse
 import pyqrcode
 import sys

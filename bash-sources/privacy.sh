@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-PROXY_HOST=""
-PROXY_SSH_KEY=""
-PROXY_BIND_IP=""
-PROXY_PORT_SOCKS=7070
-PROXY_PORT_HTTP=8888
-PROXY_PORT_HTTP_REMOTE=8888
-PROXY_BROWSER="chromium-browser"
+PROXY_HOST=${PROXY_HOST:-""}
+PROXY_SSH_KEY=${PROXY_SSH_KEY:-""}
+PROXY_BIND_IP=${PROXY_BIND_IP:-""}
+PROXY_PORT_SOCKS=${PROXY_PORT_SOCKS:-7070}
+PROXY_PORT_HTTP=${PROXY_PORT_HTTP:-8888}
+PROXY_PORT_HTTP_REMOTE=${PROXY_PORT_HTTP_REMOTE:-8888}
+PROXY_BROWSER=${PROXY_BROWSER:-"chromium-browser"}
 
 function ssh_setup {
     ssh-add -l | grep -q $(realpath "$PROXY_SSH_KEY") || ssh-add "$PROXY_SSH_KEY"
@@ -22,9 +22,8 @@ function ssh_setup {
         -D "$bind_opt""$PROXY_PORT_SOCKS" \
         -L "$bind_opt""$PROXY_PORT_HTTP:localhost:$PROXY_PORT_HTTP_REMOTE" \
         -N \
-        -q \
         "$PROXY_HOST" \
-        &
+        >ssh_tunnel.log 2>&1 &
 
     sshpid=$!
 }

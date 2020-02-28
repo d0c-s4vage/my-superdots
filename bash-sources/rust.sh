@@ -11,4 +11,5 @@ function install_rust {
 
 if [ -d $(readlink -f ~/.cargo) ] ; then
     source $HOME/.cargo/env
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi

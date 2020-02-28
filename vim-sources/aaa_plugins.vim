@@ -21,7 +21,8 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['clangd-7'],
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
-    \ 'ruby': ['/usr/local/bin/solargraph', 'stdio'],
+    \ 'ruby': ['/home/james/.rbenv/shims/solargraph', 'stdio'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 \ }
 
 " Plug 'tpope/vim-bundler'
@@ -33,7 +34,7 @@ Plug 'tpope/vim-rails', { 'for' : 'ruby' }
 "Plug 'fishbullet/deoplete-ruby'
 "Plug 'uplus/deoplete-solargraph'
 
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'vim-scripts/SyntaxRange', { 'for': 'markdown' }
 "Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips', { 'tag': '3.1' } " they changed the way snippets are loaded/edited in 3.2
