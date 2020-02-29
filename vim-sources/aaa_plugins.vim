@@ -17,8 +17,8 @@ Plug 'junegunn/fzf.vim'
 
 let g:LanguageClient_serverCommands = {
     \ 'sh': ['bash-language-server', 'start'],
-    \ 'c': ['clangd-7'],
-    \ 'cpp': ['clangd-7'],
+    \ 'c': ['clangd-11'],
+    \ 'cpp': ['clangd-11'],
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
     \ 'ruby': ['/home/james/.rbenv/shims/solargraph', 'stdio'],
