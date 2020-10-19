@@ -25,6 +25,11 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 \ }
 
+Plug 'dense-analysis/ale', { 'for': ['ruby'] }
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\}
+
 " Plug 'tpope/vim-bundler'
 " Plug 'tpope/vim-dispatch'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
@@ -77,6 +82,9 @@ Plug 'lifepillar/vim-solarized8'
 "Plug 'd0c-s4vage/pfp-vim'
 Plug 'godlygeek/tabular'
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
 

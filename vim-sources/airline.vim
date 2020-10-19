@@ -17,3 +17,5 @@ autocmd! User AirlineAfterInit call DoAirlineInit()
 
 let g:airline_left_sep="▙▚▝"
 let g:airline_right_sep="▖▚▜"
+
+let g:airline#extensions#ale#enabled = 1

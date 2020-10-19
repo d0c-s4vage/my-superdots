@@ -6,7 +6,6 @@ function git_clean {
     git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 }
 
-
 function wip_current_branch {
     curr_branch=$(git rev-parse --abbrev-ref HEAD)
     if [ $? -ne 0 ] || [ -z "${curr_branch}" ] ; then
