@@ -47,6 +47,14 @@ set clipboard+=unnamed
 " open file under the cursor in a new tab
 nmap <leader>o <C-W>f<C-W>L
 
+" open file under the cursor in the preview window
+function! OpenFileInPrevWindow()
+    let cfile = expand("<cfile>")
+    wincmd p
+    execute "edit " . cfile
+endfunction
+nmap <leader>f :call OpenFileInPrevWindow()<CR>
+
 
 function! ReplaceWord()
     let curr_word = expand('<cword>')
@@ -114,3 +122,9 @@ endif
 
 
 set fillchars+=vert:░
+
+set cursorline
+set cursorcolumn
+
+hi CursorColumn cterm=NONE guibg=#303030
+hi CursorLine cterm=NONE guibg=#303030
