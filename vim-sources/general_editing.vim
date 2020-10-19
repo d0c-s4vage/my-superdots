@@ -114,3 +114,7 @@ endif
 
 
 set fillchars+=vert:░
+
+" workaround for annoying KeyboardInterrupt error
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python2_host_prog = '/usr/bin/python2'

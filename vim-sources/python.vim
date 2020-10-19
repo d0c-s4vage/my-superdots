@@ -109,5 +109,4 @@ endfunction
 let g:black_linelength = 79
 "autocmd BufWritePre *.py execute ':Black'
 
-
 messages clear
