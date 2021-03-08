@@ -17,8 +17,8 @@ Plug 'junegunn/fzf.vim'
 
 let g:LanguageClient_serverCommands = {
     \ 'sh': ['bash-language-server', 'start'],
-    \ 'c': ['clangd-10'],
-    \ 'cpp': ['clangd-10'],
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
     \ 'ruby': ['/home/james/.rbenv/shims/solargraph', 'stdio'],
@@ -79,7 +79,7 @@ Plug 'vim-airline/vim-airline-themes', { 'do': ':AirlineTheme tomorrow'}
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-solarized8'
 "Plug 'vim-scripts/AfterColors.vim'
-"Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
+Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
 "Plug 'd0c-s4vage/pfp-vim'
 Plug 'godlygeek/tabular'
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
