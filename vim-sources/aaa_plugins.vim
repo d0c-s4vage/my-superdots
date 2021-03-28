@@ -16,7 +16,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 let g:LanguageClient_serverCommands = {
-    \ 'sh': ['bash-language-server', 'start'],
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
     \ 'python': ['pyls'],
@@ -42,9 +41,8 @@ Plug 'tpope/vim-rails', { 'for' : 'ruby' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'vim-scripts/SyntaxRange', { 'for': 'markdown' }
 "Plug 'vim-syntastic/syntastic'
-"Plug 'SirVer/ultisnips', { 'tag': '3.1' } " they changed the way snippets are loaded/edited in 3.2
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'd0c-s4vage/vim-morph'
 Plug 'd0c-s4vage/pfp-vim', { 'on': [ 'PfpInit', 'PfpParse' ] }
 "Plug 'shawncplus/phpcomplete.vim'
