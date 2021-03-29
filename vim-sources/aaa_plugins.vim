@@ -20,8 +20,8 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['clangd'],
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
-    \ 'ruby': ['/home/james/.rbenv/shims/solargraph', 'stdio'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'other': ['./leftimus'],
 \ }
 
 Plug 'dense-analysis/ale', { 'for': ['ruby'] }
@@ -31,8 +31,7 @@ let g:ale_linters = {
 
 " Plug 'tpope/vim-bundler'
 " Plug 'tpope/vim-dispatch'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for' : 'ruby' }
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 "Plug 'psf/black'
 
 "Plug 'fishbullet/deoplete-ruby'

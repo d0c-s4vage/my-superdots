@@ -38,3 +38,5 @@ export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind 'ctrl-o:execute($EDITOR -p {
 builtin set -o histexpand;
 builtin bind -x '"\C-x1": __fzf_history';
 builtin bind '"\C-r": "\C-x1\e^\er"'
+
+alias fzf="fzf --multi"

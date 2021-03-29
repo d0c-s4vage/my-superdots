@@ -39,9 +39,9 @@ function! LGrep(...)
 	lop
 	redraw!
 endfunction
-command! -nargs=+ -complete=file Llgrep call LGrep(<f-args>)
-map ,s :Llgrep 
-map ,S :execute 'Llgrep '.expand('<cword>')<CR>
+"command! -nargs=+ -complete=file Llgrep call LGrep(<f-args>)
+"map ,s :Llgrep 
+"map ,S :execute 'Llgrep '.expand('<cword>')<CR>
 
-nmap <PageUp> :lprev<CR>zz
-nmap <PageDown> :lnext<CR>zz
+"nmap <PageUp> :lprev<CR>zz
+"nmap <PageDown> :lnext<CR>zz

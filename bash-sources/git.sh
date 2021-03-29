@@ -22,3 +22,5 @@ function wip_current_branch {
 
 git config --global diff.tool vimdiff
 git config --global difftool.prompt false
+
+alias git_branch="git rev-parse --abbrev-ref HEAD"
