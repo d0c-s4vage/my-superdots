@@ -82,6 +82,11 @@ function chart-scatter {
     labels=()
     marker_idx=0
     markers=("◊" "★" "✗" "♠" "● " "✓" "○" "◆" "◎" )
+    if [ -z "$COLOR" ] ; then
+        marker_colors=('' '' '' '' '')
+    else
+        marker_colors=('\e[31m' '\e[32m' '\e[33m' '\e[34m' '\e[35m')
+    fi
     marker=${markers[0]}
     xes=()
     yes=()
@@ -99,7 +104,7 @@ function chart-scatter {
             y=$(sed 's/.*,//' <<<"$item")
         else
             label=$(sed 's/:.*//' <<<"$item")
-            marker="${markers[$marker_idx]}"
+            marker="$marker_idx"
             ((marker_idx=($marker_idx + 1) % ${#markers[@]}))
             labels+=("$label")
             curr_label_length="${#label}"
@@ -128,8 +133,8 @@ function chart-scatter {
         fi
     done
 
-    num_rows=${MAX_HEIGHT:-30}
-    num_cols=${MAX_WIDTH:-80}
+    num_rows=${MAX_HEIGHT:-20}
+    num_cols=${MAX_WIDTH:-50}
     row_increment=$(bc <<<"scale=5; ($max_y_value - $min_y_value) / $num_rows")
     col_increment=$(bc <<<"scale=5; ($max_x_value - $min_x_value) / $num_cols")
 
@@ -184,7 +189,8 @@ function chart-scatter {
         col=$(sed "s/$re/\2/" <<<"${yes[$idx]}")
         x=$(sed "s/$re/\3/" <<<"${yes[$idx]}")
         y=$(sed "s/$re/\4/" <<<"${yes[$idx]}")
-        label=$(sed "s/$re/\5/" <<<"${yes[$idx]}")
+        marker_idx=$(sed "s/$re/\5/" <<<"${yes[$idx]}")
+        marker="${markers[$marker_idx]}"
 
         if [[ $col -gt $max_col ]] ; then
             max_col=$col
@@ -211,7 +217,7 @@ function chart-scatter {
         if [[ $last_drawn_marker_row -eq $row ]] && [[ $last_drawn_marker_col -eq $col ]] ; then
             continue
         fi
-        echo -n $label
+        echo -en "${marker_colors[$marker_idx]}${marker}\e[0m"
         last_drawn_marker_row=$row
         last_drawn_marker_col=$col
     done
@@ -246,6 +252,6 @@ function chart-scatter {
     # print the legend
     for idx in "${!labels[@]}"; do
         label_marker="${markers[$idx]}"
-        printf "%s - %-${max_label_length}s\n" "$label_marker" "${labels[$idx]}"
+        printf "%s - %-${max_label_length}s\n" $(echo -en "${marker_colors[$idx]}${label_marker}\e[0m") "${labels[$idx]}"
     done
 }
