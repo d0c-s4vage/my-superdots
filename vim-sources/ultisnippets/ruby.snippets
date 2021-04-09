@@ -1,0 +1,11 @@
+snippet arg
+opts.on('-${1:a}', '--${2:argument}', '${3:Description}') do |value|
+	${0:options['$2'.gsub('-', '_').to_sym] = value}
+end
+endsnippet
+
+snippet arg_str
+opts.on('-${1:a}', '--${2:argument}=${3:ARG}', '${4:Description}') do |value|
+	${0:options['$2'.gsub('-', '_').to_sym] = value}
+end
+endsnippet
