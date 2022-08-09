@@ -6,3 +6,8 @@ else
 fi
 
 PS1="$PS1 lptp [ \\W ]: \[\e[0m\]"
+
+# let's use vi mode in bash
+set editing-mode vi
+# show if we're in vi insert mode or not
+set show-mode-in-prompt on

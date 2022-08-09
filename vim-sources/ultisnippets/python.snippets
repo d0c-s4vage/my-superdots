@@ -137,11 +137,7 @@ import sys
 
 
 def parse_args(argv):
-    class ArgParser(argparse.ArgumentParser):
-        def format_help(self):
-            return __doc__
-
-    parser = ArgParser()
+    parser = argparse.ArgumentParser()
 
     ${0}
 
