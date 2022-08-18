@@ -1,7 +1,44 @@
+
+let g:virtual_env_dir = expand("~") . "/.vim/python_virtualenv"
+let g:virtual_env_reqs = [
+    \ "jedi",
+    \ "black",
+    \ "pylint",
+    \ "flake8",
+    \ "peewee",
+\ ]
+function! python#VirtualEnvCreate()
+    "let g:python3_host_prog = g:virtual_env_dir . '/bin/python3'
+    if $PATH !~ g:virtual_env_dir . '/bin'
+        let $PATH=g:virtual_env_dir.'/bin:'.$PATH
+    endif
+
+    let activate_this = g:virtual_env_dir . "/bin/activate_this.py"
+    silent! execute "python3 exec(open('" . activate_this . "').read(), {'__file__': '" . activate_this . "'}))"
+
+    if !isdirectory(g:virtual_env_dir)
+        call python#VirtualEnvInstall()
+    endif
+
+    " coc settings
+    call coc#config("python.pythonPath", g:virtual_env_dir . "/bin/python3")
+    call coc#config("python.formatting.provider", "black")
+endfunction
+
+function! python#VirtualEnvInstall()
+    if !isdirectory(g:virtual_env_dir)
+        echo "Creating virtual environment"
+        silent! execute "!python3 -m virtualenv " . shellescape(g:virtual_env_dir)
+    endif
+    echo "Installing packages"
+    silent! execute "!pip install " . join(g:virtual_env_reqs, ' ')
+endfunction
+
 function! SetupPython()
     setlocal tabstop=4
     setlocal shiftwidth=4
     setlocal expandtab
+    call python#VirtualEnvCreate()
 endfunction
 
 command! -bar SetupPython call SetupPython()

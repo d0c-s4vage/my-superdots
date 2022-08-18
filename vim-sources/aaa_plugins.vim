@@ -25,7 +25,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {
     \ 'branch': 'release',
-    \ 'do' : ':CocInstall coc-rust-analyzer coc-rust'
+    \ 'do' : ':CocInstall coc-rust-analyzer coc-rust coc-pyright coc-clangd coc-solargraph coc-snippets'
 \ }
 
 " -----------------------------------------------------------------------------
@@ -52,9 +52,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " Plug 'vim-scripts/SyntaxRange', { 'for': 'markdown' }
 "Plug 'vim-syntastic/syntastic'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" Plug 'd0c-s4vage/vim-morph'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'd0c-s4vage/vim-morph'
 " Plug 'd0c-s4vage/pfp-vim', { 'on': [ 'PfpInit', 'PfpParse' ] }
 "Plug 'shawncplus/phpcomplete.vim'
 "Plug 'rhysd/vim-grammarous'
