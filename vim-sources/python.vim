@@ -6,6 +6,7 @@ let g:virtual_env_reqs = [
     \ "pylint",
     \ "flake8",
     \ "peewee",
+    \ "arrow",
 \ ]
 function! python#VirtualEnvCreate()
     "let g:python3_host_prog = g:virtual_env_dir . '/bin/python3'

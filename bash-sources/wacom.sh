@@ -15,3 +15,9 @@ function setup_wacom {
 
     xinput map-to-output $id_stylus $monitor
 }
+
+function wacom_slower_stylus {
+    device=$(xinput list | grep Wacom | grep stylus | grep -Po 'id=\K[^ ].')
+    property=$(xinput list-props $device | grep "Constant Deceleration" | grep -Po '\(\K[^\)]+')
+    xinput set-prop $device $property 4.0
+}

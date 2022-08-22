@@ -1,0 +1,13 @@
+Morph! *
+    sed "s/<<DATE>>/$(date +%m-%d-%y)/g"
+MorphEnd
+
+Morph *.gpg*
+	gpg --encrypt --batch --recipient d0c.s4vage@gmail.com 2>/dev/null
+	gpg --decrypt --batch 2>/dev/null
+MorphEnd
+
+Morph *.b64*
+    base64
+    base64 -d
+MorphEnd

@@ -25,8 +25,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {
     \ 'branch': 'release',
-    \ 'do' : ':CocInstall coc-rust-analyzer coc-rust coc-pyright coc-clangd coc-solargraph coc-snippets'
+    \ 'do' : ':CocInstall coc-rust-analyzer coc-rust coc-pyright coc-clangd coc-snippets coc-java'
 \ }
+" \ 'do' : ':CocInstall coc-rust-analyzer coc-rust coc-pyright coc-clangd coc-solargraph coc-snippets'
 
 " -----------------------------------------------------------------------------
 " Language Server Client ------------------------------------------------------
@@ -88,7 +89,7 @@ Plug 'vim-airline/vim-airline-themes', { 'do': ':AirlineTheme tomorrow'}
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-solarized8'
 "Plug 'vim-scripts/AfterColors.vim'
-" Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
+Plug 'd0c-s4vage/pct-vim', {'branch': 'feature-threads_and_tags'}
 "Plug 'd0c-s4vage/pfp-vim'
 " Plug 'godlygeek/tabular'
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
