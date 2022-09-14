@@ -1,7 +1,7 @@
 
 function setup_wacom {
     #Change DVI-I-1 to what monitor you want from running command: xrandr
-    local monitor="eDP-1"
+    local monitor="DP-1-1-2"
     local pad_name="Wacom Intuos PT M 2 Pad pad"
 
     #undo
@@ -19,5 +19,5 @@ function setup_wacom {
 function wacom_slower_stylus {
     device=$(xinput list | grep Wacom | grep stylus | grep -Po 'id=\K[^ ].')
     property=$(xinput list-props $device | grep "Constant Deceleration" | grep -Po '\(\K[^\)]+')
-    xinput set-prop $device $property 4.0
+    xinput set-prop $device $property 5.0
 }

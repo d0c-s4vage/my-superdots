@@ -55,7 +55,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 "Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'd0c-s4vage/vim-morph'
+" Plug 'd0c-s4vage/vim-morph'
 " Plug 'd0c-s4vage/pfp-vim', { 'on': [ 'PfpInit', 'PfpParse' ] }
 "Plug 'shawncplus/phpcomplete.vim'
 "Plug 'rhysd/vim-grammarous'

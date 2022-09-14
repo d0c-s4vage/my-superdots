@@ -40,3 +40,12 @@ builtin bind -x '"\C-x1": __fzf_history';
 builtin bind '"\C-r": "\C-x1\e^\er"'
 
 alias fzf="fzf --multi"
+
+fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  local tmp_opts="${FZF_DEFAULT_OPTS}"
+  # local tmp_opts="${tmp_opts} --preview 'batcat --style=numbers --color=always --line-range $1:-10 --line-range $1:+10 --highlight-line $1 {}'"
+  local tmp_opts="${tmp_opts} --preview 'echo --style=numbers --color=always --line-range $1:-10 --line-range $1:+10 --highlight-line $1 {}'"
+  rg --files-with-matches --no-messages "$1" | FZF_DEFAULT_OPTS=$tmp_opts fzf
+  # rg --files-with-matches --no-messages "$1" | FZF_DEFAULT_COMMAND=$tmp_opts fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}

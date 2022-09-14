@@ -126,8 +126,8 @@ set fillchars+=vert:░
 " workaround for annoying KeyboardInterrupt error
 let g:python3_host_prog = '/usr/bin/python3'
 let g:python2_host_prog = '/usr/bin/python2'
+
+hi CursorColumn cterm=NONE guifg=NONE guibg=#303030
+hi CursorLine cterm=NONE guifg=NONE guibg=#303030
 set cursorline
 set cursorcolumn
-
-hi CursorColumn cterm=NONE guibg=#303030
-hi CursorLine cterm=NONE guibg=#303030
