@@ -4,8 +4,8 @@ let g:coc_disable_transparent_cursor = 1
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> <leader>n <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>N <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>n <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>N <Plug>(coc-diagnostic-prev)
 
 " GoTo code navigation.
 nmap <silent> <leader>id <Plug>(coc-definition)
