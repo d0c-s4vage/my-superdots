@@ -10,19 +10,31 @@ let g:virtual_env_reqs = [
 \ ]
 function! python#VirtualEnvCreate()
     "let g:python3_host_prog = g:virtual_env_dir . '/bin/python3'
-    if $PATH !~ g:virtual_env_dir . '/bin'
-        let $PATH=g:virtual_env_dir.'/bin:'.$PATH
-    endif
-
-    let activate_this = g:virtual_env_dir . "/bin/activate_this.py"
-    silent! execute "python3 exec(open('" . activate_this . "').read(), {'__file__': '" . activate_this . "'}))"
 
     if !isdirectory(g:virtual_env_dir)
         call python#VirtualEnvInstall()
     endif
 
+    if $VIRTUAL_ENV != ""
+        " let the current virtualenv come before our vim virtual env in the
+        " PATH
+        let $PATH=$VIRTUAL_ENV.'/bin:'.g:virtual_env_dir.'/bin:'.$PATH
+
+        echom "Including vim virtualenv packages in PYTHONPATH: ".glob(g:virtual_env_dir.'/lib/*/site-packages')
+        let $PYTHONPATH=glob(g:virtual_env_dir.'/lib/*/site-packages').$PYTHONPATH
+
+        call coc#config("python.pythonPath", $VIRTAL_ENV . "/bin/python3")
+        echom "setting python.venvPath to ". fnamemodify($VIRTUAL_ENV, ':h')
+        call coc#config("python.venvPath", fnamemodify($VIRTUAL_ENV, ':h'))
+        echom "setting python.venv to " . fnamemodify($VIRTUAL_ENV, ':t')
+        call coc#config("python.venv", fnamemodify($VIRTUAL_ENV, ':t'))
+    else
+        let $PATH=g:virtual_env_dir.'/bin:'.$PATH
+        let activate_this = g:virtual_env_dir . "/bin/activate_this.py"
+        silent! execute "python3 exec(open('" . activate_this . "').read(), {'__file__': '" . activate_this . "'}))"
+    endif
+
     " coc settings
-    call coc#config("python.pythonPath", g:virtual_env_dir . "/bin/python3")
     call coc#config("python.formatting.provider", "black")
 endfunction
 
