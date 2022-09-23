@@ -2,6 +2,10 @@ snippet notimpl
 raise NotImplementedError("$1${2: is not implemented}")
 endsnippet
 
+snippet pdb
+__import__("pdb").set_trace()
+endsnippet
+
 snippet obj
 type(
     "${1:TmpClass}",

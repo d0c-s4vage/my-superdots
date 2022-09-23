@@ -32,8 +32,7 @@ function! MaybeClearRelative()
     if &number
         set norelativenumber
     endif
-endfunction
-au WinEnter * :call MaybeSetRelative()
+endfunction au WinEnter * :call MaybeSetRelative()
 au WinLeave * :call MaybeClearRelative()
 
 syntax enable
@@ -131,3 +130,8 @@ hi CursorColumn cterm=NONE guifg=NONE guibg=#303030
 hi CursorLine cterm=NONE guifg=NONE guibg=#303030
 set cursorline
 set cursorcolumn
+
+hi Normal guibg=#121212
+hi LineNr guibg=#212121
+hi CursorLineNr guibg=#414141
+hi VertSplit guibg=#414141 guifg=#414141

@@ -11,3 +11,5 @@ let g:ultisnips_python_style="v_sphinx"
 let g:UltiSnipsEditSplit="vertical"
 
 let g:UltiSnipsSnippetDirectories=add(g:UltiSnipsSnippetDirectories, s:this_dir."/ultisnippets")
+
+call coc#config("snippets.ultisnips.directories", g:UltiSnipsSnippetDirectories)
