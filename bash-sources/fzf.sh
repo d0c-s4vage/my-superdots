@@ -1,3 +1,35 @@
+#!/usr/bin/env bash
+
+
+THIS_PROG="$0"
+
+
+function install_batcat {
+    sudo apt install bat
+}
+lazy_install_hook batcat install_batcat
+
+function install_fzf {
+    log_command sudo apt install fzf
+    echo "reloading fzf settings ..."
+    . "$THIS_PROG"
+}
+lazy_install_hook fzf install_fzf
+
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --preview 'batcat --style=numbers --color=always --line-range :500 {}'"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind 'ctrl-o:execute($EDITOR -p {+})+abort,ctrl-y:execute-silent(echo {} | xclip -sel clip)+abort'"
+
+if bin_exists fzf ; then
+    alias fzf="fzf --multi"
+
+    builtin set -o histexpand
+    builtin bind -x '"\C-x1": __fzf_history'
+    builtin bind '"\C-r": "\C-x1\e^\er"'
+else
+    unalias fzf >/dev/null 2>&1
+fi
+
 # Another CTRL-R script to insert the selected command from history into the command line/region
 __fzf_history ()
 {
@@ -30,16 +62,6 @@ __fzf_history ()
                 builtin bind '"\e^":'
         fi
 }
-
-export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
-export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --preview 'batcat --style=numbers --color=always --line-range :500 {}'"
-export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind 'ctrl-o:execute($EDITOR -p {+})+abort,ctrl-y:execute-silent(echo {} | xclip -sel clip)+abort'"
-
-builtin set -o histexpand;
-builtin bind -x '"\C-x1": __fzf_history';
-builtin bind '"\C-r": "\C-x1\e^\er"'
-
-alias fzf="fzf --multi"
 
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi

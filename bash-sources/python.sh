@@ -1,14 +1,18 @@
-# virtualenvwrapper
-#export WORKON_HOME=~/.venvs
-#wrapper=/usr/local/bin/virtualenvwrapper.sh
-#if [ -e "$wrapper" ] ; then
-#    . "$wrapper"
-#else
-#    echo "Virtualenvwrapper script does not exist at '$wrapper'"
-#    echo "Make sure you have installed virtualenvwrapper globally with"
-#    echo ""
-#    echo "    sudo pip install virtualenvwrapper"
-#fi
+function install_pyenv {
+    log_command bash -c "curl https://pyenv.run | bash"
+    init_pyenv
+}
+lazy_install_hook pyenv install_pyenv
+
+function init_pyenv {
+    export PYENV_ROOT="$HOME/.pyenv"
+    path_prepend "$PYENV_ROOT/bin"
+    eval "$(pyenv init -)"
+}
+
+if [ -e "$HOME/.pyenv/bin/pyenv" ] ; then
+    init_pyenv
+fi
 
 function venv2 {
 	dest="./venv2"

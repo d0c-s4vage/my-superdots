@@ -1,3 +1,5 @@
-export PATH="$HOME/usr/bin:$PATH"
-export PATH="~/.yarn/bin:~/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$PATH:$HOME/.cargo/bin"
+path_prepend "$HOME/usr/bin"
+path_prepend "$HOME/usr/bin"
+path_prepend "$HOME/.yarn/bin"
+path_prepend "$HOME/.config/yarn/global/node_modules/.bin"
+path_prepend "$HOME/.cargo/bin"

@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 THIS_PROG="$0"
 
 
-function _sdkman_init {
+function install_javac {
+    echo test
+}
+lazy_install_hook javac install_javac
+
+
+function install_sdkman {
+    log_command bash -c "curl -s 'https://get.sdkman.io' | bash"
+    init_sdkman
+}
+lazy_install_hook sdk install_sdkman
+
+function init_sdkman {
     export SDKMAN_DIR="$HOME/.sdkman"
-    if [ ! -d ~/.sdkman ] ; then
-        log "SDKMan hasn't been installed, yet, installing..."
-        log 'curl -s "https://get.sdkman.io" | bash'
-        curl -s "https://get.sdkman.io" | bash | log_box_indent
-    fi
     . "$SDKMAN_DIR/bin/sdkman-init.sh"
 }
 
-# Uncomment this to have java
-_sdkman_init
+if [ -e "$HOME/.sdkman" ] ; then
+    init_sdkman
+fi

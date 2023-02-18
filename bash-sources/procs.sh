@@ -6,6 +6,12 @@ function log {
     echo "${LOG_PREFIX} $@"
 }
 
+function log_command {
+    log "Running command:"
+    log "  $@"
+    "$@" 2>&1 | log_box_indent
+}
+
 function log_indent {
     sed "s/^/    /g"
 }

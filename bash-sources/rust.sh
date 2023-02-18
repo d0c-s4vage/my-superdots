@@ -1,15 +1,11 @@
 #!/bin/bash
 
 function install_rust {
-    echo ""
-    echo "---------------------------------"
-    echo "Rust is not installed, installing"
-    echo "---------------------------------"
-    echo ""
-    curl https://sh.rustup.rs -sSf | sh 
+    curl https://sh.rustup.rs -sSf | sh -s -- -y
 }
+lazy_install_hook cargo install_rust
 
 if [ -d $(readlink -f ~/.cargo) ] ; then
     source $HOME/.cargo/env
-    export PATH="$HOME/.cargo/bin:$PATH"
+    path_prepend "${HOME}/.cargo/bin"
 fi
