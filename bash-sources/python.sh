@@ -2,11 +2,11 @@ function install_pyenv {
     log_command bash -c "curl https://pyenv.run | bash"
     init_pyenv
 }
-lazy_install_hook pyenv install_pyenv
+sd::lazy_install_hook pyenv install_pyenv
 
 function init_pyenv {
     export PYENV_ROOT="$HOME/.pyenv"
-    path_prepend "$PYENV_ROOT/bin"
+    sd::path::prepend "$PYENV_ROOT/bin"
     eval "$(pyenv init -)"
 }
 

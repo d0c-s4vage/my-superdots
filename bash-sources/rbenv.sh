@@ -5,8 +5,8 @@ function install_ruby {
     rbenv install 3.2.1
     rbenv global 3.2.1
 }
-lazy_install_hook ruby install_ruby
-lazy_install_hook irb install_ruby
+sd::lazy_install_hook ruby install_ruby
+sd::lazy_install_hook irb install_ruby
 
 
 function install_rbenv {
@@ -34,14 +34,14 @@ function install_rbenv {
     curl -fsSL "$url" | bash
     do_rbenv_init
 }
-lazy_install_hook rbenv install_rbenv
+sd::lazy_install_hook rbenv install_rbenv
 
 function do_rbenv_init {
     local rbenv_init_commands=$(rbenv init - | grep -v "export PATH")
     eval "$rbenv_init_commands"
 
-    path_prepend "${HOME}/.rbenv/bin"
-    path_prepend "${HOME}/.rbenv/shims"
+    sd::path::prepend "${HOME}/.rbenv/bin"
+    sd::path::prepend "${HOME}/.rbenv/shims"
 }
 
 bin_exists rbenv && do_rbenv_init

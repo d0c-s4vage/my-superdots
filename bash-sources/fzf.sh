@@ -7,20 +7,20 @@ THIS_PROG="$0"
 function install_batcat {
     sudo apt install bat
 }
-lazy_install_hook batcat install_batcat
+sd::lazy_install_hook batcat install_batcat
 
 function install_fzf {
     log_command sudo apt install fzf
     echo "reloading fzf settings ..."
     . "$THIS_PROG"
 }
-lazy_install_hook fzf install_fzf
+sd::lazy_install_hook fzf install_fzf
 
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --preview 'batcat --style=numbers --color=always --line-range :500 {}'"
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind 'ctrl-o:execute($EDITOR -p {+})+abort,ctrl-y:execute-silent(echo {} | xclip -sel clip)+abort'"
 
-if bin_exists fzf ; then
+if sd::bin_exists fzf ; then
     alias fzf="fzf --multi"
 
     builtin set -o histexpand
