@@ -1,5 +1,5 @@
 function install_pyenv {
-    log_command bash -c "curl https://pyenv.run | bash"
+    sd::log::command bash -c "curl https://pyenv.run | bash"
     init_pyenv
 }
 sd::lazy_install_hook pyenv install_pyenv

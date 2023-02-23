@@ -11,7 +11,7 @@ sd::lazy_install_hook javac install_javac
 
 
 function install_sdkman {
-    log_command bash -c "curl -s 'https://get.sdkman.io' | bash"
+    sd::log::command bash -c "curl -s 'https://get.sdkman.io' | bash"
     init_sdkman
 }
 sd::lazy_install_hook sdk install_sdkman

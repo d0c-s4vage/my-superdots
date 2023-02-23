@@ -11,7 +11,6 @@ function! DetermineGitgutterDiffBase()
     else
         let g:gitgutter_diff_base = "" 
     endif
-    echom "Set diff base to ".g:gitgutter_diff_base.", for branch: ".curr_branch
 endfunction
 
 command! -bar DetermineGitgutterDiffBase call DetermineGitgutterDiffBase()

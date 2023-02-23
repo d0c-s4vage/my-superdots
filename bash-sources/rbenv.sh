@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function install_ruby {
-    log "Installing ruby 3.2.1 with rbenv"
+    sd::log "Installing ruby 3.2.1 with rbenv"
     rbenv install 3.2.1
     rbenv global 3.2.1
 }
@@ -10,8 +10,8 @@ sd::lazy_install_hook irb install_ruby
 
 
 function install_rbenv {
-    log "installing rbenv dependencies"
-    log_command sudo apt-get install \
+    sd::log "installing rbenv dependencies"
+    sd::log::command sudo apt-get install \
         autoconf \
         bison \
         patch \
@@ -29,7 +29,7 @@ function install_rbenv {
         libdb-dev \
         uuid-dev
 
-    log "rbenv not found on path, installing it"
+    sd::log "rbenv not found on path, installing it"
     url="https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer"
     curl -fsSL "$url" | bash
     do_rbenv_init
@@ -44,4 +44,4 @@ function do_rbenv_init {
     sd::path::prepend "${HOME}/.rbenv/shims"
 }
 
-bin_exists rbenv && do_rbenv_init
+sd::bin_exists rbenv && do_rbenv_init

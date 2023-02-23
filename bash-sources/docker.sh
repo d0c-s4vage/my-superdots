@@ -29,20 +29,20 @@ function docker_ip {
 }
 
 function install_docker {
-    log "Setting up docker apt repository"
+    sd::log "Setting up docker apt repository"
     sudo mkdir -m 0755 -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor --batch --yes -o /etc/apt/keyrings/docker.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    log "Updating with new apt source"
-    log_command sudo apt update -yq
+    sd::log "Updating with new apt source"
+    sd::log::command sudo apt update -yq
 
-    log "Installing docker and related libs/tools"
-    log_command sudo apt install -yq docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    sd::log "Installing docker and related libs/tools"
+    sd::log::command sudo apt install -yq docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-    log "Should you be added to the docker group? (y/n)"
+    sd::log "Should you be added to the docker group? (y/n)"
     if [ "$answer" == "${answer#[Yy]}" ] ; then
-        log "Ok, not installing"
+        sd::log "Ok, not installing"
         return 1
     fi
 }

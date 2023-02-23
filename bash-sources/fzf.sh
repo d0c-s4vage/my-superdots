@@ -10,7 +10,7 @@ function install_batcat {
 sd::lazy_install_hook batcat install_batcat
 
 function install_fzf {
-    log_command sudo apt install fzf
+    sd::log::command sudo apt install fzf
     echo "reloading fzf settings ..."
     . "$THIS_PROG"
 }
