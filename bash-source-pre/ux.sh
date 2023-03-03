@@ -21,7 +21,7 @@ function sd::ux::gum_confirm {
 
     if sd::bin_exists gum ; then
         alias sd::ux::confirm=sd::ux::gum_confirm
-        return $?
+        return $res
     else
         sd::log::debug "Still not using gum, falling back to orig_confirm"
         # and finally we still need to call orig_confirm if gum wasn't installed

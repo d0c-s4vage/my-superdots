@@ -10,9 +10,9 @@ function init_pyenv {
     eval "$(pyenv init -)"
 }
 
-if [ -e "$HOME/.pyenv/bin/pyenv" ] ; then
-    init_pyenv
-fi
+#if [ -e "$HOME/.pyenv/bin/pyenv" ] ; then
+#    init_pyenv
+#fi
 
 function venv2 {
 	dest="./venv2"
