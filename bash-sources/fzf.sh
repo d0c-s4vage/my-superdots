@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-THIS_PROG="$0"
+THIS_PROG="$BASH_SOURCE"
 
 
 function install_batcat {
