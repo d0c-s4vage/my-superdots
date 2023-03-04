@@ -13,3 +13,9 @@ function install_nvm {
     curl -o- "$url" | bash
 }
 sd::lazy_install_hook nvm install_nvm
+
+if sd::bin_exists node ; then
+    # sometimes node will drop us into a REPL when we do node --version, not
+    # sure why
+    node --version >/dev/null </dev/null
+fi

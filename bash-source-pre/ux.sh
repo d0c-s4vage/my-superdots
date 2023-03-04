@@ -4,11 +4,11 @@ function install_gum {
     sd::log::command sudo mkdir -p /etc/apt/keyrings
     sd::log::command bash -c "curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/charm.gpg"
     sd::log::command bash -c 'echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list'
-    sd::log::command bash -c "sudo apt update && sudo apt install gum"
+    sd::log::command bash -c "sudo apt update && sudo apt install -yq gum"
 
     reload
 }
-sd::lazy_install_hook gum install_gum
+sd::lazy_install_hook --needs-sudo gum install_gum
 
 function sd::ux::gum_confirm {
     if ! sd::bin_exists gum ; then

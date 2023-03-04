@@ -5,16 +5,16 @@ THIS_PROG="$0"
 
 
 function install_batcat {
-    sudo apt install bat
+    sudo apt install -yq bat
 }
-sd::lazy_install_hook batcat install_batcat
+sd::lazy_install_hook --needs-sudo batcat install_batcat
 
 function install_fzf {
-    sd::log::command sudo apt install fzf
+    sd::log::command sudo apt install -yq fzf
     echo "reloading fzf settings ..."
     . "$THIS_PROG"
 }
-sd::lazy_install_hook fzf install_fzf
+sd::lazy_install_hook --needs-sudo fzf install_fzf
 
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --preview 'batcat --style=numbers --color=always --line-range :500 {}'"

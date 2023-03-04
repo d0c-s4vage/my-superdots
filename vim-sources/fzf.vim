@@ -1,5 +1,5 @@
 
-let rg_opts = "--no-ignore --hidden --glob '!venv/' --glob '!venv3/' --glob '!.git/'"
+let rg_opts = "--no-ignore --hidden --glob '!venv/' --glob '!venv3/' --glob '!.git/' --glob '!.tox/'"
 let $FZF_DEFAULT_COMMAND = "rg --files ".rg_opts
 
 nmap <silent> <c-p> :Files<CR>

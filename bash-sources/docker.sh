@@ -46,4 +46,4 @@ function install_docker {
         return 1
     fi
 }
-sd::lazy_install_hook docker install_docker
+sd::lazy_install_hook --needs-sudo docker install_docker

@@ -34,7 +34,7 @@ function install_rbenv {
     curl -fsSL "$url" | bash
     do_rbenv_init
 }
-sd::lazy_install_hook rbenv install_rbenv
+sd::lazy_install_hook --needs-sudo rbenv install_rbenv
 
 function do_rbenv_init {
     local rbenv_init_commands=$(rbenv init - | grep -v "export PATH")
