@@ -20,13 +20,14 @@ function! python#VirtualEnvCreate()
         " PATH
         let $PATH=$VIRTUAL_ENV.'/bin:'.g:virtual_env_dir.'/bin:'.$PATH
 
-        echom "Including vim virtualenv packages in PYTHONPATH: ".glob(g:virtual_env_dir.'/lib/*/site-packages')
-        let $PYTHONPATH=glob(g:virtual_env_dir.'/lib/*/site-packages').$PYTHONPATH
+        silent! echom "Including vim virtualenv packages in PYTHONPATH: ".glob(g:virtual_env_dir.'/lib/*/site-packages')
+        let $PYTHONPATH=glob(g:virtual_env_dir.'/lib/*/site-packages').":".$PYTHONPATH
+        let $PYTHONPATH=glob($VIRTUAL_ENV.'/lib/*/site-packages').":".$PYTHONPATH
 
         call coc#config("python.pythonPath", $VIRTAL_ENV . "/bin/python3")
-        echom "setting python.venvPath to ". fnamemodify($VIRTUAL_ENV, ':h')
+        silent! echom "setting python.venvPath to ". fnamemodify($VIRTUAL_ENV, ':h')
         call coc#config("python.venvPath", fnamemodify($VIRTUAL_ENV, ':h'))
-        echom "setting python.venv to " . fnamemodify($VIRTUAL_ENV, ':t')
+        silent! echom "setting python.venv to " . fnamemodify($VIRTUAL_ENV, ':t')
         call coc#config("python.venv", fnamemodify($VIRTUAL_ENV, ':t'))
     else
         let $PATH=g:virtual_env_dir.'/bin:'.$PATH
@@ -40,10 +41,11 @@ endfunction
 
 function! python#VirtualEnvInstall()
     if !isdirectory(g:virtual_env_dir)
-        echo "Creating virtual environment"
+        silent! execute "!mkdir -p " . shellescape(fnamemodify(g:virtual_env_dir, ":h"))
+        silent! echom "Creating virtual environment"
         silent! execute "!python3 -m virtualenv " . shellescape(g:virtual_env_dir)
     endif
-    echo "Installing packages"
+    silent! echom "Installing packages"
     silent! execute "!pip install " . join(g:virtual_env_reqs, ' ')
 endfunction
 
@@ -58,8 +60,6 @@ command! -bar SetupPython call SetupPython()
 autocmd Filetype python SetupPython
 
 function! PythonAddImportInsertLeave(insert_mode)
-    echom "CALLED INSERTLEAVE"
-
     execute "normal! V/import.*$\\n\\s*\\n\<CR>"
     execute "normal! !sort -k 2|uniq\<CR>"
     normal! `mzz"
