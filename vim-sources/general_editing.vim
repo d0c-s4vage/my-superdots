@@ -85,36 +85,36 @@ endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 
-if system('git rev-parse --show-toplevel')[0] == "/"
-    function! RegenTags(initing)
-        let currPath = getcwd()
-        let maxLevels = 10
-        let currLevel = 0
-
-        let projectRoot = system('git rev-parse --show-toplevel')[:-2]
-        let tagsFile = findfile('tags', projectRoot, -1)
-        exec "set tags=".projectRoot."/tags"
-
-        let currDir = getcwd()
-        exec "cd ".projectRoot
-
-        if a:initing == 1
-            call system("ctags -R --exclude='*.js' --exclude='*.css' --exclude='*.md' --exclude='*.au3' --exclude='*.json'")
-            echom "Tags regenerated"
-        else
-            call system("ctags -a '".expand("%")."'")
-        endif
-
-        exec "cd ".currDir
-    endfunction
-
-    command! TagRegen call RegenTags(1)
-
-    augroup ctags
-        au!
-        au! BufWritePost * :call RegenTags(0)
-    augroup END
-endif
+" if system('git rev-parse --show-toplevel')[0] == "/"
+"     function! RegenTags(initing)
+"         let currPath = getcwd()
+"         let maxLevels = 10
+"         let currLevel = 0
+" 
+"         let projectRoot = system('git rev-parse --show-toplevel')[:-2]
+"         let tagsFile = findfile('tags', projectRoot, -1)
+"         exec "set tags=".projectRoot."/tags"
+" 
+"         let currDir = getcwd()
+"         exec "cd ".projectRoot
+" 
+"         if a:initing == 1
+"             call system("ctags -R --exclude='*.js' --exclude='*.css' --exclude='*.md' --exclude='*.au3' --exclude='*.json'")
+"             echom "Tags regenerated"
+"         else
+"             call system("ctags -a '".expand("%")."'")
+"         endif
+" 
+"         exec "cd ".currDir
+"     endfunction
+" 
+"     command! TagRegen call RegenTags(1)
+" 
+"     augroup ctags
+"         au!
+"         au! BufWritePost * :call RegenTags(0)
+"     augroup END
+" endif
 
 " nnoremap <silent><leader>g <c-w><c-]><c-w>T
 

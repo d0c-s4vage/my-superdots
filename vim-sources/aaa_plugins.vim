@@ -76,7 +76,7 @@ Plug 'SirVer/ultisnips'
 " "php
 " "Plug 'shawncplus/phpcomplete.vim'
 " 
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 " " Plug 'nvie/vim-flake8', { 'for': 'python' }
 " " Plug 'tpope/vim-fugitive'
 " " Plug 'tpope/vim-markdown', { 'for': 'markdown' }

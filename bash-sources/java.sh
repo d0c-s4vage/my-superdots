@@ -15,7 +15,6 @@ function install_sdkman {
         echo $SHLVL
         sd::log::info initing sdkman
         init_sdkman
-        export -f sdk
         return 0
     fi
 
@@ -23,11 +22,16 @@ function install_sdkman {
     sed -ri '/(sdkman|SDKMAN)/d' ~/.bashrc
 
     init_sdkman
-    export -f sdk
 }
-SD_HOOK_TYPE=function sd::lazy_install_hook sdk install_sdkman
+
+function check_sdkman {
+    [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]
+}
 
 function init_sdkman {
     export SDKMAN_DIR="$HOME/.sdkman"
     . "$SDKMAN_DIR/bin/sdkman-init.sh"
+    export -f sdk
 }
+
+sd::func::lazy_create --func sdk --check check_sdkman --install install_sdkman --init init_sdkman

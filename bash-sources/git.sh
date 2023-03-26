@@ -20,7 +20,10 @@ function wip_current_branch {
     xdg-open "${mr_url}"
 }
 
-git config --global diff.tool vimdiff
-git config --global difftool.prompt false
+function init_git {
+    git config --global diff.tool vimdiff
+    git config --global difftool.prompt false
+}
+sd::func::jit git init_git
 
 alias git_branch="git rev-parse --abbrev-ref HEAD"

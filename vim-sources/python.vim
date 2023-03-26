@@ -145,14 +145,14 @@ function! PythonAddImport(insert_mode)
     execute "normal! aimport\<space>\<ESC>"
 
     augroup PythonAddImport
-        autocmd InsertLeave <buffer> :call PythonAddImportInsertLeave(0)
+        exec "autocmd InsertLeave <buffer> :call PythonAddImportInsertLeave(" . a:insert_mode . ")"
     augroup end
 
     startinsert!
 endfunction
 
-" nnoremap <C-j> :call PythonAddImport(0)<CR>
-" inoremap <C-j> <ESC>:call PythonAddImport(1)<CR>
+nnoremap <C-j> :call PythonAddImport(0)<CR>
+inoremap <C-j> <ESC>:call PythonAddImport(1)<CR>
 
 
 " black

@@ -15,7 +15,7 @@ function nix_prompt {
 	PS1="${main_color}${main_prefix}${rc_disp} lptp [ \\W ]: \[\e[0m\]"
 }
 
-PROMPT_COMMAND="nix_prompt"
+# PROMPT_COMMAND="nix_prompt"
 
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
 
