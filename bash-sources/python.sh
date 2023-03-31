@@ -1,8 +1,19 @@
 function install_pyenv {
-    sd::log::command bash -c "curl https://pyenv.run | bash"
+    curl https://pyenv.run | bash
     init_pyenv
+
+    sudo apt install -yq libbz2-dev liblzma-dev tk-dev
+
+    pyenv install 3.11.2
 }
-sd::lazy_install_hook pyenv install_pyenv
+
+if [ -e "$HOME/.pyenv/bin/pyenv" ] ; then
+    sd::func::jit pyenv init_pyenv
+else
+    sd::lazy_install_hook --interactive pyenv install_pyenv
+fi
+
+sd::func::jit "python3 python" init_pyenv
 
 function init_pyenv {
     export PYENV_ROOT="$HOME/.pyenv"
@@ -10,9 +21,6 @@ function init_pyenv {
     eval "$(pyenv init -)"
 }
 
-#if [ -e "$HOME/.pyenv/bin/pyenv" ] ; then
-#    init_pyenv
-#fi
 
 function venv2 {
 	dest="./venv2"

@@ -21,4 +21,4 @@ function install_neovim {
     curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
-sd::lazy_install_hook --needs-sudo vim install_neovim
+sd::lazy_install_hook --interactive vim install_neovim

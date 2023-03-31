@@ -7,14 +7,14 @@ THIS_PROG="$BASH_SOURCE"
 function install_batcat {
     sudo apt install -yq bat
 }
-sd::lazy_install_hook --needs-sudo batcat install_batcat
+sd::lazy_install_hook --interactive batcat install_batcat
 
 function install_fzf {
     sd::log::command sudo apt install -yq fzf
     echo "reloading fzf settings ..."
     . "$THIS_PROG"
 }
-sd::lazy_install_hook --needs-sudo fzf install_fzf
+sd::lazy_install_hook --interactive fzf install_fzf
 
 function init_fzf {
     export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'

@@ -4,4 +4,4 @@ function install_rg {
     sudo apt install -yq ripgrep
 }
 
-sd::lazy_install_hook --needs-sudo rg install_rg
+sd::lazy_install_hook --interactive rg install_rg
