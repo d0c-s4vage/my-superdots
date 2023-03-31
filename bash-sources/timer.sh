@@ -30,7 +30,7 @@ function bench_it {
 USAGE: $0 --iters NUM_ITERS [--loud] -- CMD_ARGS...
 
    --iters,-i ITERS   Number of iterations
-    --loud,-l         Don't suppress output
+    --loud,-l         No output suppression
     --help,-h
 
 EOF
