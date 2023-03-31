@@ -13,7 +13,7 @@ sd::lazy_install_hook --interactive gum install_gum
 function sd::ux::gum_confirm {
     if ! sd::bin_exists gum ; then
         sd::log::debug setting ux::confirm to orig_confirm
-        unalias sd::ux::confirm
+        unalias sd::ux::confirm || true
     fi
 
     gum confirm "$@"
@@ -24,7 +24,6 @@ function sd::ux::gum_confirm {
         return $res
     else
         sd::log::debug "Still not using gum, falling back to orig_confirm"
-        sd::ux:: "$@"
         sd::ux::confirm "$@"
         return $?
     fi
