@@ -5,6 +5,7 @@ function install_pyenv {
     sudo apt install -yq libbz2-dev liblzma-dev tk-dev
 
     pyenv install 3.11.2
+    pyenv global 3.11.2
 }
 
 if [ -e "$HOME/.pyenv/bin/pyenv" ] ; then
