@@ -1,5 +1,7 @@
 sd::path::prepend "$HOME/usr/bin"
-sd::path::prepend "$HOME/usr/bin"
+sd::path::prepend "/usr/local/go/bin"
+sd::path::prepend "/opt/nvim-linux-x86_64/bin"
+sd::path::prepend "$(go env GOPATH)/bin"
 sd::path::prepend "$HOME/.yarn/bin"
 sd::path::prepend "$HOME/.config/yarn/global/node_modules/.bin"
 sd::path::prepend "$HOME/.cargo/bin"
